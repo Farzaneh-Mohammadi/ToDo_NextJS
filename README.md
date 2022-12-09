@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 # ToDo App | NextJS and Redux
 
 
-## Demo
+### Demo
 See live demo [Here]()
 
 
@@ -33,10 +33,5 @@ In this project, I creating a Complete Todo App for managing tasks that has all 
 - Redux
 - Redux-persist  => to persist data on localStorage
 - React toastify => to show message after doing actions
-
-
-
-## Demo
-See demo [Here]()
 
 
