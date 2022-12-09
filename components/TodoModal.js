@@ -70,6 +70,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
       toast.error("Please Enter a value!");
     }
   };
+  
 
   return (
     <>
