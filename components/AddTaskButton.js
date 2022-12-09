@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import TodoModal from "./TodoModal";
+import styles from '../styles/Home.module.css'
 
 function AddTaskButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -8,7 +9,7 @@ function AddTaskButton() {
   return (
     <div >
       <Button
-        style= {{backgroundColor: "rgb(255, 32, 225)", color: "#fff05", fontWeight: "bold", padding: "1rem"}}
+      className={styles.addTaskBtn}
         variant="contained"
         onClick={() => setIsModalOpen(true)}
       >

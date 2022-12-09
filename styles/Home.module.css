@@ -8,3 +8,21 @@
     rgb(196, 181, 249) 76.3%
   );
 }
+
+.addTaskBtn{
+  background-color: rgb(255, 32, 225);
+   color: #fff;
+    font-weight: bold;
+     padding: 1rem 3rem;
+     margin: 1rem auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+}
+
+.addTaskBtn:hover{
+  background-color: rgb(184, 63, 168);
+
+
+}

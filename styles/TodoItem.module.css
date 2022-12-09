@@ -4,6 +4,7 @@
   margin: 1rem auto;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgb(147, 147, 255);
+  width: 60%;
 }
 
 /* .todoDetail{
@@ -27,7 +28,7 @@
 }
 
 .todoTitle{
-  color: blue;
+  color: purple;
   font-size: 18px;
   font-weight: 700;
   margin-left: 10px;
