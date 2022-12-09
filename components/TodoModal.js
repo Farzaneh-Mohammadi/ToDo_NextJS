@@ -51,6 +51,9 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
               taskTitle,
             })
           );
+          toast.success('Value Changed!');
+          setIsModalOpen(false);
+          setTaskTitle("");
         } else {
           toast.error("Please Change value!");
         }
