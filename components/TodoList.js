@@ -1,6 +1,7 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import TodoItem from './TodoItem';
+import styles from "../styles/TodoItem.module.css";
 
 const TodoList = () => {
 
@@ -8,11 +9,11 @@ const TodoList = () => {
 console.log("todoList:", todoList);
 
   return (
-    <div>
+    <div className={styles.todoItemContainer}>
         {todoList && todoList.length > 0 ? 
-        todoList.map((todo) => {
-            <TodoItem todo={todo}/>
-        }) :
+        todoList.map((todo) => 
+            <TodoItem key={todo.id} todo={todo} />
+         ) :
         'empty'
          }
 </div> 
