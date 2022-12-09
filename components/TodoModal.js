@@ -29,7 +29,6 @@ console.log(taskTitle);
     else {
       toast.error("Please Enter a Task to Add")
     }
-
   }
 
   return (
