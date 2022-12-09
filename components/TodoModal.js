@@ -1,28 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 import styles from "../styles/TodoModal.module.css";
 import { Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/reducer/todoSlice";
+import { addTodo, editTodo } from "../redux/reducer/todoSlice";
 
 import { toast } from "react-toastify";
 
-function TodoModal({ type, isModalOpen, setIsModalOpen }) {
+function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
   const [taskTitle, setTaskTitle] = useState("");
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (type === "update" && todo) {
+      setTaskTitle(todo.taskTitle);
+    } else {
+      setTaskTitle("");
+    }
+  }, [type, todo, isModalOpen]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(taskTitle === '') {
+    if (taskTitle === "") {
       toast.error("Please Enter a value!");
       return;
     }
 
     console.log(taskTitle);
     if (taskTitle) {
-      if(type === 'add') {
+      if (type === "add") {
         dispatch(
           addTodo({
             id: new Date().getTime().toString(),
@@ -34,10 +42,19 @@ function TodoModal({ type, isModalOpen, setIsModalOpen }) {
         setTaskTitle("");
       }
 
-      if(type === 'update') {
+      if (type === "update") {
         console.log("updating");
+        if (todo.taskTitle !== taskTitle) {
+          dispatch(
+            editTodo({
+              ...todo,
+              taskTitle,
+            })
+          );
+        } else {
+          toast.error("Please Change value!");
+        }
       }
-
     } else {
       toast.error("Please Enter a value!");
     }
@@ -57,7 +74,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen }) {
 
             <form className={styles.form}>
               <h2 className={styles.formTitle}>
-              {type === 'add' ? 'Add Task' : 'Update Task'}
+                {type === "add" ? "Add Task" : "Update Task"}
               </h2>
               <TextField
                 id="outlined-basic"
@@ -75,7 +92,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen }) {
                 variant="contained"
                 onClick={(e) => handleSubmit(e)}
               >
-                {type === 'add' ? 'Add Task' : 'Update Task'}
+                {type === "add" ? "Add Task" : "Update Task"}
               </Button>
 
               <Button

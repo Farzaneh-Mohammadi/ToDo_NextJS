@@ -15,7 +15,6 @@ const TodoItem = ({ todo }) => {
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
 
   const dispatch = useDispatch();
-  // const todoList = useSelector((state) => state.todo.todoList)
 
 
   const handleUpdate = () => {
@@ -44,7 +43,7 @@ const TodoItem = ({ todo }) => {
         </div>
       </div>
 
-      <TodoModal type="update" isModalOpen={updateModalOpen} setIsModalOpen={setUpdateModalOpen} />
+      <TodoModal todo={todo} type="update" isModalOpen={updateModalOpen} setIsModalOpen={setUpdateModalOpen} />
     </div>
   );
 };
