@@ -3,39 +3,56 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import styles from "../styles/TodoModal.module.css";
 import { Button, TextField } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../redux/reducer/todoSlice";
 
-function TodoModal({modalOpen, setModalOpen}) {
+import { toast } from "react-toastify";
 
-  const [inputText, setInputText] = useState("")
+function TodoModal({isModalOpen, setIsModalOpen}) {
+
+  const [taskTitle, setTaskTitle] = useState("")
+
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputText);
+console.log(taskTitle);
+    if (taskTitle) {
+      dispatch(addTodo({
+        id:new Date().getTime().toString(),
+        taskTitle,
+      }))
+      toast.success(`${taskTitle} added to your ToDoList`)
+      setIsModalOpen(false)
+      setTaskTitle("")
+    }
+    else {
+      toast.error("Please Enter a Task to Add")
+    }
+
   }
 
   return (
     <>
-    {modalOpen && (
+    {isModalOpen && (
       <div className={styles.wrapper}>
       <div className={styles.container}>
-        {/* <div  */}
-          <button className={styles.closeButton} onClick={() => setModalOpen(false)}>
+          <button className={styles.closeButton} onClick={() => setIsModalOpen(false)}>
           <CloseIcon />
           </button>
-        {/* </div> */}
 
-        <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
+        <form className={styles.form} >
           <h2 className={styles.formTitle}>Add Task</h2>
-          <TextField id="outlined-basic" label="Enter Task" variant="outlined" value={inputText} onChange={(e) => setInputText(e.target.value)} />
+          <TextField id="outlined-basic" label="Enter Task" variant="outlined" value={taskTitle} onChange={(e) => setTaskTitle(e.target.value)} />
         </form>
 
         <div className={styles.buttonContainer}>
-          <Button type="submit" color="secondary" variant="contained">
+          <Button type="submit" color="secondary" variant="contained" onClick={(e) => handleSubmit(e)}>
             Add Task
             {/* {type === 'add' ? 'Add Task' : 'Update Task'} */}
           </Button>
 
-          <Button color="secondary" variant="outlined" onClick={() => setModalOpen(false)}>
+          <Button color="secondary" variant="outlined" onClick={() => setIsModalOpen(false)}>
             Cancel
           </Button>
         </div>
