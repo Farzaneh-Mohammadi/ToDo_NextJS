@@ -19,7 +19,7 @@ const TodoItem = ({ todo }) => {
 
 
   const handleUpdate = () => {
-
+    setUpdateModalOpen(true);
   }
   
 
@@ -44,7 +44,7 @@ const TodoItem = ({ todo }) => {
         </div>
       </div>
 
-      <TodoModal isModalOpen={updateModalOpen} setIsModalOpen={setUpdateModalOpen} />
+      <TodoModal type="update" isModalOpen={updateModalOpen} setIsModalOpen={setUpdateModalOpen} />
     </div>
   );
 };

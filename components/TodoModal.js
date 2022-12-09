@@ -17,6 +17,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen }) {
     e.preventDefault();
     if(taskTitle === '') {
       toast.error("Please Enter a value!");
+      return;
     }
 
     console.log(taskTitle);
