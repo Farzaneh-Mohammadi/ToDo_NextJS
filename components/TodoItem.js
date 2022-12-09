@@ -30,7 +30,7 @@ const TodoItem = ({ todo }) => {
   return (
     <div >
       <div className={styles.todoRow}>
-        <p>{todo.taskTitle}</p>
+        <p className={styles.todoTitle}>{todo.taskTitle}</p>
 
         <div className={styles.todoBtns}>
           <Button onClick={handleUpdate}  style={{ color: "black" }}>

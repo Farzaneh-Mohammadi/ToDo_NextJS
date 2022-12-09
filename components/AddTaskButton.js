@@ -6,13 +6,13 @@ function AddTaskButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div>
+    <div >
       <Button
-        color="secondary"
+        style= {{backgroundColor: "rgb(255, 32, 225)", color: "#fff05", fontWeight: "bold", padding: "1rem"}}
         variant="contained"
         onClick={() => setIsModalOpen(true)}
       >
-        Add Task
+        Click Here to Add Task
       </Button>
       <TodoModal
         type="add"
