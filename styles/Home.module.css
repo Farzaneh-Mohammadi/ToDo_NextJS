@@ -1,5 +1,4 @@
-
-.todoAppContainer{
+.todoAppContainer {
   padding: 2rem;
   height: 100vh;
   background: linear-gradient(
@@ -8,5 +7,3 @@
     rgb(196, 181, 249) 76.3%
   );
 }
-
-

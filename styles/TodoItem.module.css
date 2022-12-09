@@ -1,6 +1,6 @@
 .todoItemContainer {
   background-color: #fff;
-  padding: 1rem 1.5rem .5rem 1.5rem;
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
   margin: 1rem auto;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgb(147, 147, 255);
@@ -16,22 +16,20 @@
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(186, 162, 248, 0.85);
-
 }
 
 .todoRow:hover {
   background-color: rgba(248, 162, 244, 0.85);
 }
 
-.todoTitle{
+.todoTitle {
   color: purple;
   font-size: 18px;
   font-weight: 700;
   margin-left: 10px;
 }
 
-
-@media (min-width:400px) and (max-width:600px) {
+@media (min-width: 400px) and (max-width: 600px) {
   .todoItemContainer {
     padding: 10px 10px 3px 10px;
     width: 85%;
@@ -44,13 +42,12 @@
     width: 95%;
   }
 
-
   .todoRow {
-    padding: 5px ;
+    padding: 5px;
     margin-bottom: 7px;
   }
 
-  .todoTitle{
+  .todoTitle {
     font-size: 15px;
     font-weight: 600;
     margin-left: 5px;

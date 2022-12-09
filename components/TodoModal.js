@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import CloseIcon from "@mui/icons-material/Close";
-
-import styles from "../styles/TodoModal.module.css";
-import { Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
+
 import { addTodo, editTodo } from "../redux/reducer/todoSlice";
+import styles from "../styles/TodoModal.module.css";
 
 import { toast } from "react-toastify";
+import { Button, TextField } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+
 
 function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
   const [taskTitle, setTaskTitle] = useState("");
@@ -51,7 +52,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
               taskTitle,
             })
           );
-          toast.success('Value Changed!');
+          toast.success("Value Changed!");
           setIsModalOpen(false);
           setTaskTitle("");
         } else {
