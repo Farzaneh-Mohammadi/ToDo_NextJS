@@ -5,6 +5,7 @@ import TodoModal from "./TodoModal";
 import { Button } from "@mui/material";
 
 function AddTaskButton() {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -13,7 +14,6 @@ function AddTaskButton() {
         style={{
           color: "rgb(255, 32, 225)",
           fontWeight: "bold",
-
           margin: "1rem auto 3rem auto",
           display: "flex",
           justifyContent: "center",
@@ -23,8 +23,12 @@ function AddTaskButton() {
       >
         ToDo App | NextJS and Redux
       </h1>
+
       <hr />
+
       <Button
+        variant="contained"
+        onClick={() => setIsModalOpen(true)}
         style={{
           backgroundColor: "rgb(255, 32, 225)",
           color: "#fff",
@@ -35,11 +39,10 @@ function AddTaskButton() {
           justifyContent: "center",
           alignItems: "center",
         }}
-        variant="contained"
-        onClick={() => setIsModalOpen(true)}
       >
         Click Here to Add Task
       </Button>
+
       <TodoModal
         type="add"
         isModalOpen={isModalOpen}

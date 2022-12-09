@@ -10,10 +10,13 @@ import CloseIcon from "@mui/icons-material/Close";
 
 
 function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
+
   const [taskTitle, setTaskTitle] = useState("");
 
   const dispatch = useDispatch();
 
+
+  // to replace old task with new task after editing 
   useEffect(() => {
     if (type === "update" && todo) {
       setTaskTitle(todo.taskTitle);
@@ -22,15 +25,18 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
     }
   }, [type, todo, isModalOpen]);
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (taskTitle === "") {
       toast.error("Please Enter a value!");
       return;
     }
-
-    console.log(taskTitle);
+    // console.log(taskTitle);
     if (taskTitle) {
+
+    // CRUD => CREATE method - add a task to list 
       if (type === "add") {
         dispatch(
           addTodo({
@@ -43,8 +49,9 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
         setTaskTitle("");
       }
 
+       // CRUD => UPDATE method - edit a task on list
       if (type === "update") {
-        console.log("updating");
+        // console.log("updating");
         if (todo.taskTitle !== taskTitle) {
           dispatch(
             editTodo({
@@ -77,9 +84,12 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
             </button>
 
             <form className={styles.form}>
+
               <h2 className={styles.formTitle}>
-                {type === "add" ? "Add Task" : "Update Task"}
+              {/*  -------- handle modal title -------- */}
+                {type === "add" ? "Add Task" : "Update Task"}   
               </h2>
+
               <TextField
                 id="outlined-basic"
                 label="Enter Task"
@@ -96,6 +106,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
                 variant="contained"
                 onClick={(e) => handleSubmit(e)}
               >
+               {/*  -------- handle modal button  -------- */}
                 {type === "add" ? "Add Task" : "Update Task"}
               </Button>
 
@@ -106,6 +117,7 @@ function TodoModal({ type, isModalOpen, setIsModalOpen, todo }) {
               >
                 Cancel
               </Button>
+
             </div>
           </div>
         </div>

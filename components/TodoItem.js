@@ -19,7 +19,7 @@ const TodoItem = ({ todo }) => {
   };
 
   const handleDelete = () => {
-    dispatch(deleteTodo(todo.id));
+    dispatch(deleteTodo(todo.id)); // --- CRUD => DELETE method - delete a todo ---
   };
 
   return (

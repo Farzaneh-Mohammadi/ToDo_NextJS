@@ -8,10 +8,13 @@ export const todoSlice = createSlice({
   name: "todo",
   initialState: initialValue,
   reducers: {
+
+    // CRUD => CREATE method - add a task to list 
     addTodo: (state, action) => {
       state.todoList.push(action.payload);
     },
 
+    // CRUD => DELETE method - delete a task from list 
     deleteTodo: (state, action) => {
       const newTodoList = state.todoList.filter(
         (newItem) => newItem.id !== action.payload
@@ -22,6 +25,7 @@ export const todoSlice = createSlice({
       };
     },
 
+    // CRUD => UPDATE method - edit a task on list
     editTodo: (state, action) => {
       state.todoList.map((todo) => {
         if (todo.id === action.payload.id) {
