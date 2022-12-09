@@ -8,26 +8,37 @@ import { addTodo } from "../redux/reducer/todoSlice";
 
 import { toast } from "react-toastify";
 
-function TodoModal({ isModalOpen, setIsModalOpen }) {
+function TodoModal({ type, isModalOpen, setIsModalOpen }) {
   const [taskTitle, setTaskTitle] = useState("");
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(taskTitle === '') {
+      toast.error("Please Enter a value!");
+    }
+
     console.log(taskTitle);
     if (taskTitle) {
-      dispatch(
-        addTodo({
-          id: new Date().getTime().toString(),
-          taskTitle,
-        })
-      );
-      toast.success(`${taskTitle} added to your ToDoList`);
-      setIsModalOpen(false);
-      setTaskTitle("");
+      if(type === 'add') {
+        dispatch(
+          addTodo({
+            id: new Date().getTime().toString(),
+            taskTitle,
+          })
+        );
+        toast.success(`${taskTitle} Added!`);
+        setIsModalOpen(false);
+        setTaskTitle("");
+      }
+
+      if(type === 'update') {
+        console.log("updating");
+      }
+
     } else {
-      toast.error("Please Enter a Task to Add");
+      toast.error("Please Enter a value!");
     }
   };
 
@@ -44,7 +55,9 @@ function TodoModal({ isModalOpen, setIsModalOpen }) {
             </button>
 
             <form className={styles.form}>
-              <h2 className={styles.formTitle}>Add Task</h2>
+              <h2 className={styles.formTitle}>
+              {type === 'add' ? 'Add Task' : 'Update Task'}
+              </h2>
               <TextField
                 id="outlined-basic"
                 label="Enter Task"
@@ -61,8 +74,7 @@ function TodoModal({ isModalOpen, setIsModalOpen }) {
                 variant="contained"
                 onClick={(e) => handleSubmit(e)}
               >
-                Add Task
-                {/* {type === 'add' ? 'Add Task' : 'Update Task'} */}
+                {type === 'add' ? 'Add Task' : 'Update Task'}
               </Button>
 
               <Button
